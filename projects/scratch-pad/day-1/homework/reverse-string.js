@@ -21,7 +21,11 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
+    var newString = "";
+    for (var i = input.length - 1; i >= 0; i--) {
+        newString += input[i]; // characters in input need to be added one by one in a reverse order
+    }
+    return newString; //newString is an accumulation of all characters in a reverse order
     
     
     

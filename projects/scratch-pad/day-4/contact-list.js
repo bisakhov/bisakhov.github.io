@@ -67,13 +67,21 @@ function makeContactList() {
         //     return contacts;
         // },
         
-        // printAllContactNames: function() {
-        //     for (var i = 0; i < contact.length; i++) {
-        //         return contacts[i].fullName;
-        //     }
-        // }
-    }
-}
+        printAllContactNames: function() {
+            var names = '';
+            for (var i = 0; i < contacts.length; i++) {
+                if (i === contacts.length - 1) {
+                     names += `${contacts[i].nameFirst} ${contacts[i].nameLast}`
+                } else {
+                names += `${contacts[i].nameFirst} ${contacts[i].nameLast}\n`
+                
+                }
+                
+                return names;
+            }
+        }
+    
+
 
 
 

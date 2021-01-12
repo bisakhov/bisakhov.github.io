@@ -90,15 +90,17 @@ return stringSplit.join('-');
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    if (string[0] == char) {
-        console.log('true');
-    } else {
-        console.log('false');
-    }
+   
+    if (string[0].toLowerCase() === char.toLowerCase()) {
+        return true;
+    } 
+        return false;
+    
 
     // YOUR CODE ABOVE HERE //
 }
+
+
 
 /**
  * Given an input String and a single character, return true if the String
@@ -115,11 +117,11 @@ function beginsWith(string, char) {
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 
- if (string[string.length - 1] == char) {
-        console.log('true');
-    } else {
-        console.log('false');
-    }
+ if (string[string.length - 1].toLowerCase() === char.toLowerCase()) {
+        return true;
+    } 
+        return false;
+
 
     // YOUR CODE ABOVE HERE //
 }
@@ -131,7 +133,8 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+var concatenated = stringOne  + stringTwo;
+return concatenated;
 
 
     // YOUR CODE ABOVE HERE //
@@ -150,7 +153,7 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+return args.join('');
 
     // YOUR CODE ABOVE HERE //
 }
@@ -164,13 +167,19 @@ function join(stringOne, stringTwo) {
  *
  * TIP: What property of the String do we need to compare?
  */
+ 
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+if (stringOne.length >= stringTwo.length) {
+    return stringOne;
+} else if (stringOne.length < stringTwo.length) { 
+    return stringTwo;
+    
+}
+}
 
     // YOUR CODE ABOVE HERE //
-}
+
 
 /**
  * Given two Strings, return -1 if the first is higher in alphabetical order than
@@ -182,7 +191,12 @@ function longest(stringOne, stringTwo) {
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
 
-
+if (stringOne === stringTwo) {
+    return 0;
+} else if (stringOne > stringTwo) {
+    return -1;
+} 
+return 1;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -197,7 +211,12 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+ if (stringOne === stringTwo) {
+     return 0;
+ } else if (stringOne < stringTwo) {
+     return -1;
+ } 
+ return 1;
 
 
 
