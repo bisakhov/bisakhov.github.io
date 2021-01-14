@@ -36,9 +36,9 @@
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
  var contact = {
-     id: id,
-     nameFirst: nameFirst,
-     nameLast: nameLast,
+     id: 'id',
+     nameFirst: 'nameFirst',
+     nameLast: 'nameLast',
  };
  return contact;
 } 

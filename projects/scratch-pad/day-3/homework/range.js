@@ -29,11 +29,12 @@ function range(start, end) {
     }
   } else if(start < end) {
       for(var i = start; i <= end; i++) {
-       arr.push(i);
+      arr.push(i);
       }
   } 
+return arr
 
-    console.log(arr);
+
     
     // YOUR CODE GOES ABOVE HERE //
 }

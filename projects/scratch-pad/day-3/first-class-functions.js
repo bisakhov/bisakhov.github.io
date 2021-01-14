@@ -112,14 +112,16 @@ function modifyStrings(strings, modify) {
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
+
 function allStringsPass (strings, test) {
     // YOUR CODE BELOW HERE //
-    for (var i = 0; i < strings.length - 1; i++) {
-           if (strings[i][0].toLowerCase() === test.toLowerCase()) {
-               return true
-           } else {
-           return false}
+    for (var i = 0; i < strings.length; i++) {
+           if (strings[i][0].toLowerCase() !== test.toLowerCase) {
+               return false
+           }
+           
         }
+        return true
     
     
     
