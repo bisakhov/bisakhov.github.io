@@ -35,7 +35,7 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
+   //I am using >= & < operators throughout my code 
     if (hour >= 0 && hour < 12 ) {
         console.log('Good Morning!');
     }

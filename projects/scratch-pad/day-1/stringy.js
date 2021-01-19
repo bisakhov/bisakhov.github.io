@@ -94,6 +94,7 @@ function beginsWith(string, char) {
     if (string[0].toLowerCase() === char.toLowerCase()) {
         return true;
     } 
+    //else, return false
         return false;
     
 
@@ -133,6 +134,7 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+//assign a variable called concatenated with two strings written together
 var concatenated = stringOne  + stringTwo;
 return concatenated;
 
@@ -153,6 +155,7 @@ return concatenated;
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    //arguments in this case stand for parameters in the function
 return args.join('');
 
     // YOUR CODE ABOVE HERE //
@@ -170,6 +173,7 @@ return args.join('');
  
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+//comparison of two strings based on length
 if (stringOne.length >= stringTwo.length) {
     return stringOne;
 } else if (stringOne.length < stringTwo.length) { 

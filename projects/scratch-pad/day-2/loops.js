@@ -12,6 +12,7 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
+  //for loop to run over array indexes one by one in a forward order
   for (var i = 0; i < array.length; i++) {
     console.log(array[i]);
   }
@@ -27,6 +28,7 @@ function printArrayValues(array) {
 */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
+  //reverse order
   for (var i = array.length - 1; i >= 0; i--) {
     console.log(array[i]);
   }
@@ -42,6 +44,7 @@ function printArrayValuesInReverse(array) {
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
+  //Object.keys(object) is standard syntax method to get object keys in array
   var keys = Object.keys(object);
   return keys;
     
@@ -59,6 +62,7 @@ function getObjectKeys(object) {
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
   
+ //use for-in loop here for keys
   for (var key in object) {
     console.log(key);
   }
@@ -73,6 +77,8 @@ function printObjectKeys(object) {
 function getObjectValues(object) {
   
   // YOUR CODE BELOW HERE //
+  
+  ////Object.values(object) is standard syntax method to get object values in array
   var values = Object.values(object);
   
   return values;
@@ -105,6 +111,7 @@ function printObjectValues(object) {
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
 
+// since Object.keys(object) gives us keys in an array, we can determine its length
   return Object.keys(object).length;
   
   

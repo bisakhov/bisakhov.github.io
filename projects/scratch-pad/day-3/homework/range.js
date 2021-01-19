@@ -23,15 +23,19 @@
  */
 function range(start, end) {
   var arr = [];
+  //if a>b
   if(start >= end) {
     for(var i = start; i >= end; i--) {
       arr.push(i);
     }
-  } else if(start < end) {
+  } 
+  //if a<b
+  else if(start < end) {
       for(var i = start; i <= end; i++) {
       arr.push(i);
       }
-  } 
+  }
+  //return command must be outside of for-loops
 return arr
 
 

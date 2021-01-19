@@ -101,23 +101,39 @@ function isCollection(value) {
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
     
+    //array
     if (Array.isArray(value)) {
         return 'array'
-    } else if (value === null) {
+    } //null
+    else if (value === null) {
         return 'null'
-    } else if (value instanceof Date) {
+    } 
+    //date
+    else if (value instanceof Date) {
         return 'date'
-    } else if (typeof(value) === 'object') {
+    } 
+    //object
+    else if (typeof(value) === 'object') {
         return 'object'
-    } else if (typeof(value) === 'string') {
+    } 
+    //string (primitive data types follow)
+    else if (typeof(value) === 'string') {
         return 'string'
-    } else if (typeof(value) === 'undefined') {
+    } 
+    //undefined
+    else if (typeof(value) === 'undefined') {
         return 'undefined'
-    } else if (typeof(value) === 'number') {
+    } 
+    //number
+    else if (typeof(value) === 'number') {
         return 'number'
-    } else if (typeof(value) === 'boolean') {
+    } 
+    //boolean
+    else if (typeof(value) === 'boolean') {
         return 'boolean'
-    } else {
+    } 
+    //function
+    else {
         return 'function'
     }
 }

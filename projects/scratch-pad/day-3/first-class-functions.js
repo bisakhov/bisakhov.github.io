@@ -13,6 +13,8 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    
+    //return function inside function to test if value is greater than base
     return function(value) {
         if (value > base) {
             return true
@@ -33,6 +35,8 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    
+    //return function inside function to test if value is less than base
     return function(value) {
         if (value < base) {
             return true
@@ -113,21 +117,44 @@ function modifyStrings(strings, modify) {
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
 
-function allStringsPass (strings, test) {
-    // YOUR CODE BELOW HERE //
-    for (var i = 0; i < strings.length; i++) {
-           if (strings[i][0].toLowerCase() !== test.toLowerCase) {
-               return false
-           }
+// function allStringsPass (strings, test) {
+//     // YOUR CODE BELOW HERE //
+//     return function (strings) {
+//         //var test = createStartsWithFilter();
+//     for (var i = 0; i < strings.length; i++) {
+//           if (strings[i][0] === test.toLowerCase()) {
+//               return true;
+//           } 
            
-        }
-        return true
+//         }
+//         return false;
+//     }
     
+    // function allStringsPass (strings, test) {
+    //     return function test (startsWith) {
+    //         for (var i = 0; i < strings.length; i++) {
+    //             if (strings[i][0] === startsWith) {
+    //                 return true;
+    //             }
+    //         }
+    //         return false
+    //     }
+        
+    // }
+
+function allStringsPass (strings, test) {
+    for (var i = 0; i < strings.length; i++) {
+        if (strings[i][0] === test(strings[i][0]) {
+            return true
+        }
+        }
+        return false
+    }
     
     
     
     // YOUR CODE ABOVE HERE //
-}
+// }
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
