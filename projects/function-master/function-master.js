@@ -108,17 +108,21 @@ function maybeNoises(object) {
 if (Array.isArray(object.noises) && object.noises.length >= 1
 && typeof object === 'object') {
   return object.noises.join(' ');
-} else if (Array.isArray(object.noises)) {
-  console.log('there are no noises') }
- else if (object.noises === null) {
-  console.log('there are no noises')
-} else if (object.noises instanceof Date) {
-  console.log('there are no noises')
-}
-else if (typeof object === 'object') {
-  console.log('there are no noises')
-}
-else {console.log('there are no noises')}
+} 
+
+// THE FOLLOWING STATEMENTS AREN'T NEEDED BECAUSE ELSE STANDS FOR ALL OF THEM
+// else if (Array.isArray(object.noises)) {
+//   console.log('there are no noises') }
+//  else if (object.noises === null) {
+//   console.log('there are no noises')
+// } else if (object.noises instanceof Date) {
+//   console.log('there are no noises')
+// }
+// else if (typeof object === 'object') {
+//   console.log('there are no noises')
+// }
+
+else {return 'there are no noises'}
 }
 
 
@@ -154,14 +158,19 @@ return object
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-for (var i = 0; i < Object.values(object).length; i++) {
-    if (name === object.friends[i] 
- && object.friends.length >= 1 
- && Array.isArray(object.friends) === true) {
+  //first define a condition for an empty object
+  if (object.friends === undefined) {
+    return false
+  }
+  //then run over object.friends.length loop in a usual way
+  else if (object.friends.length >= 1) {
+    for (var i = 0; i < object.friends.length; i++) {
+      if (name === object.friends[i]) {
         return true
+      }
     }
-}
-return false
+    return false
+  }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -169,7 +178,9 @@ return false
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+  //we must create an empty array to store our data (var notFriends)
   var notFriends = [];
+  
   for (var i = 0; i < array.length; i++) {
     if (array[i].name !== name 
     && !array[i].friends.includes(name)) {
@@ -184,7 +195,16 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+//use for-in loop to specify keys with bracket notation
+for (var keys in object) {
+    if (keys === key) {
+        object[keys] = value
+    } 
+    else if (keys !== key) {
+        object[key] = value
+    }
+}
+return object
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -192,15 +212,33 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
+for (var i = 0; i < array.length; i++) {
+    //define new variable key so that it equals array[i]
+    var key = array[i];
+    //deleting object[key] 
+    delete object[key];
 
+
+        
+    }
+return object
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function dedup(array) {
+//Remove duplicates from an array using forEach() and include() method
 
+function dedup(array) {
+var uniqueArray = [];
+array.forEach ((c) => {
+    if (!uniqueArray.includes(c)) {
+        uniqueArray.push(c);
+    }
+})
+return uniqueArray;
 }
 
 //////////////////////////////////////////////////////////////////////

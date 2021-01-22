@@ -1,27 +1,27 @@
 {
-  "name": "function-master",
+  "name": "underpants",
   "version": "1.0.0",
   "private": true,
-  "description": "Learn to Master the art of the Function",
-  "main": "test-master.js",
+  "description": "Functional Functions for Fun",
+  "main": "data.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "pretest": "npm install",
-    "test": "mocha ./test/index.spec.js || :",
+    "test": "mocha ./test/underpants.spec.js || :",
     "posttest": "rm -rf ./test ./node_modules"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OperationSpark/function-master.git"
+    "url": "https://github.com/OperationSpark/underpants.git"
   },
   "author": "jfraboni",
   "license": "CC",
   "bugs": {
-    "url": "https://github.com/OperationSpark/function-master/issues"
+    "url": "https://github.com/OperationSpark/underpants/issues"
   },
-  "homepage": "https://github.com/OperationSpark/function-master",
+  "homepage": "https://github.com/OperationSpark/underpants",
   "devDependencies": {
     "chai": "^3.5.0",
     "istanbul": "^0.4.5",

@@ -117,38 +117,32 @@ function modifyStrings(strings, modify) {
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
 
-// function allStringsPass (strings, test) {
+//HOW TO SOLVE IT WITHOUT ASSIGNING A NEW VARIABLE
+// function allStringsPass(strings, test) {
 //     // YOUR CODE BELOW HERE //
-//     return function (strings) {
-//         //var test = createStartsWithFilter();
-//     for (var i = 0; i < strings.length; i++) {
-//           if (strings[i][0] === test.toLowerCase()) {
-//               return true;
-//           } 
-           
-//         }
-//         return false;
-//     }
-    
-    // function allStringsPass (strings, test) {
-    //     return function test (startsWith) {
-    //         for (var i = 0; i < strings.length; i++) {
-    //             if (strings[i][0] === startsWith) {
-    //                 return true;
-    //             }
-    //         }
-    //         return false
-    //     }
-        
-    // }
+//   for(var i = 0; i < strings.length; i++ ){
+//   if(!test(strings[i])){
+// return false
+// }
+// }
+// // outside of for loop
+// return true
+//     // YOUR CODE ABOVE HERE //
+// }
 
 function allStringsPass (strings, test) {
+    var result = true;
+    // assigning new variable 
     for (var i = 0; i < strings.length; i++) {
-        if (strings[i][0] === test(strings[i][0]) {
-            return true
+        // start from false condition because we need to return our result if false conditions
+        //are not met
+        if (test(strings[i]) === false) {
+            result = false; 
         }
+        
         }
-        return false
+        //return result must be outside of for loop
+        return result
     }
     
     

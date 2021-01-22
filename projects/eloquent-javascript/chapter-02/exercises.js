@@ -6,6 +6,7 @@
 function triangles(num) {
   var tag = '';
   for (var i = 0; i < num; i++) {
+      //concatenation with addition of strings after each increment iteration
     console.log(tag += '#');  
   }
 }
