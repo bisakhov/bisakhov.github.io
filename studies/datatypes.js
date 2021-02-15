@@ -31,6 +31,30 @@ species: 'dog',
 age: 4, 
 isNoisy: true};
 
+//DOT NOTATION & BRACKET NOTATION are used to access object's value property. 
+console.log(animal.species);    //==> dog
+console.log(animal['species']); //==> dog
+
+//The difference between them is that for Dot Notation, you must know the exact key name,
+//while Bracket Notation allows you to access the value property without knowing the exact
+//key name. For more complex case of for-in loops inside a function, we must use bracket 
+//notation to account for all keys inside an object:
+var myObject = {
+  city: "New Orleans",
+  state: "Louisiana",
+  planet: "earth"
+};
+
+function capitalizeValues(object) {
+  for (var key in object) {
+    object[key] = object[key].toUpperCase();
+    //DOT NOTATION is used to denote all keys inside an object
+  }
+  return object
+}
+capitalizeValues(myObject);
+//
+
 // 6. Function - reusable block of code that accepts inputs, processes those inputs,
 // and returns a new data value. 
 // Function doesn't have to have parameters or return statement (they are optional), but certainly
@@ -114,4 +138,6 @@ var refCopy = reference;
 // That means that if we alter reference, refCopy will see those changes:
 reference.push(2);
 console.log(reference, refCopy); // -> [1, 2], [1, 2]
+
+
 

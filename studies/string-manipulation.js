@@ -1,3 +1,5 @@
+//STRING MANIPULATIONS can be described as methods used to transform strings in javascript.
+//A few examples are listed below:
 
 //1. String Length - returns length of a string
 

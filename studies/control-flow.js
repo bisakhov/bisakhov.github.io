@@ -1,7 +1,12 @@
 
 //CONTROL FLOW - refers to an order in which a sequence of code is executed.
+//Statements will execute from top to bottom.
 
-//Conditional Flow - allows us to put forks in road.
+//Conditional Flow - allows us to put forks in road. 
+
+//if (condition) stands for first condition needed to be true for the code to perform a certain operation
+//else if (condition) comes after if - denotes second condition to check if first condition is false
+//else - is an operation performed if all specified conditions above it return false
 
 ////Basic Syntax:
 if ('some condition here') {
@@ -16,7 +21,8 @@ else {
 }
 /////
 
-//ex.
+//ex. Here we want to display different messages on console 
+//depending on a value (if it satisfies if-elseif-else conditions)
 for (var i = 0; i <= 100; i++) 
 //numbers are between 0 & 100 and are increasing with an increment of +1 
 {
@@ -34,6 +40,24 @@ for (var i = 0; i <= 100; i++)
         //show the number itself if all above conditions are not met
         console.log(i);
     }
+}
+
+//ex. Here we want to display different messages based on user input
+
+var letter = document.getElementById("myInput").value;
+var text;
+
+// If the letter is "c"
+if (letter === "c") {
+  text = "Spot on! Good job!";
+
+// If the letter is "b" or "d"
+} else if (letter === "b" || letter === "d") {
+  text = "Close, but not close enough.";
+
+// If the letter is anything else
+} else {
+  text = "Waaay off..";
 }
 
 

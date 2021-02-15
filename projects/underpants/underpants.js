@@ -99,10 +99,14 @@ _.typeOf = function (value) {
 
 _.first = function (array, number) {
     if (!Array.isArray(array) || number < 0) {
-        return '[]'
+        return []
+        //[] not in quotes, didn't work with quotes
     }
     else if (!Number(number) 
-    || isNaN(number)) {
+    || isNaN(number))
+    //!Number(number) stands for not given
+    //isNaN stands for is not a number!!!
+    {
         return array[0]
     }
     else if (number >= array.length) {
@@ -111,7 +115,7 @@ _.first = function (array, number) {
         }
     else {
         var newArr = [];
-        for (var i = 0; i < number; i++) {
+        for (let i = 0; i < number; i++) {
             newArr.push(array[i])
         }
         return newArr;
@@ -137,6 +141,27 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+_.last = function (array, number) {
+    if (!Array.isArray(array) || number < 0) {
+        return [];
+    } 
+    else if (!Number(number) 
+    || isNaN(number)) {
+        return array[array.length - 1];
+    } 
+    else if (number >= array.length) {
+        return array
+    }
+    else {
+        var newArr = [];
+        for (var i = array.length - 1; i >= array.length - number; i--) {
+            newArr.unshift(array[i])
+            //.unshift method needed because newArr must be displayed in the same order
+            //as array
+        }
+        return newArr
+    }
+}
 
 
 /** _.indexOf
@@ -179,14 +204,27 @@ _.indexOf = function (array, value) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-_.contains = function (array, value) {
+
+// _.contains = function (array, value) {
+//     for (var i = 0; i < array.length; i++) {
+//         if (array[i] === value) {
+//             return true
+//         }
+//     }
+//     return false
+// }
+
+_.contains = function(array, value){
+    let result = false;
     for (var i = 0; i < array.length; i++) {
-        if (array[i] === value) {
-            return true
-        }
+        result = array[i] === value ? true : result;
+        //result is equal to if statement of array[i] === value
     }
-    return false
-}
+    return result;
+};
+
+
+
 
 /** _.each
 * Arguments:
@@ -229,14 +267,23 @@ _.each = function (collection, func) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+// _.indexOf = function (array, value) {
+//     for (var i = 0; i < array.length; i++) {
+//         if (array[i] === value) {
+//             return i}
+//         }
+//         return -1;
+//     }
+    
 _.unique = function (array) {
     var newArr = [];
     for (var i = 0; i < array.length; i++) {
+        //if .indexOf function doesn't match array[i] === value (i.e. === -1), then
+        //array[i] must be pushed into newArr
        if (_.indexOf(newArr, array[i]) === -1) {
            newArr.push(array[i])
        }
-       
-    }
+       }
     return newArr;
 }
 
@@ -258,13 +305,37 @@ _.unique = function (array) {
 
 _.filter = function (array, func) {
     let newArr = [];
-    for (let i = 0; i < array.length; i++) {
-        func(array[i], i, array)
-    }
-    if (func(newArr, array) === true) {
-        newArr.push(array[i])
-    }
+    //array[i] = e ==> element
+//.each has two parameters, one of which is an unknown fnction (we don't know what it does)
+// if that function gets result of true for array, insert each of such an element into newArr
+    _.each(array, function (e, i, array) {
+// we don't use for-loop here because _.each already has a for-loop inside it
+        let result = func (e, i, array);
+        if (result === true) {
+            newArr.push(e);
+        }
+    }) 
+    return newArr;
 }
+
+
+
+
+// _.each = function (collection, func) {
+//     if (Array.isArray(collection)) {
+//         for (var i = 0; i < collection.length; i++) {
+//             func(collection[i], i, collection)
+//         }
+        
+//     }
+//     else if (typeof collection === 'object') {
+//         for (var key in collection) {
+//         func(collection[key], key, collection)
+//         //DON'T FORGET IMPORTANCE OF BRACKET NOTATION VS DOT NOTATION
+//     }
+// }
+// }
+
 
 
 /** _.reject
@@ -280,6 +351,18 @@ _.filter = function (array, func) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function (array, func) {
+    let newArr = [];
+    _.each(array, function (e, i, array) {
+        let result = func (e, i, array);
+        if (result === false) {
+            newArr.push(e);
+        }
+    })
+    return newArr;
+}
+
+    
 
 /** _.partition
 * Arguments:
@@ -300,6 +383,34 @@ _.filter = function (array, func) {
 }
 */
 
+_.partition = function (array, func) {
+    let truthy = [];
+    let falsy = [];
+    for (let i = 0; i < array.length; i++) {
+    if (func (array[i], i, array) === true) {
+        truthy.push(array[i]);
+    } else if (func (array[i], i, array) === false) {
+        falsy.push(array[i]);
+    }
+}
+return [truthy, falsy];
+}
+
+//BY USING _.EACH METHOD
+// _.partition = function (array, func) {
+//     var truthy = [];
+//     var falsy = [];
+    
+//     _.each(array, function(val, i, arr) {
+//         if (func(val)) {
+//             truthy.push(val);
+//         } else {
+//             falsy.push(val);
+//         }
+//     });
+//     return [truthy, falsy];
+// }
+
 
 /** _.map
 * Arguments:
@@ -317,6 +428,36 @@ _.filter = function (array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (collection, func) {
+    var newArr = [];
+    //.each already sorts out if it is an array or object, we can use general terms for both
+    //element&value = e, index&key = i 
+    _.each(collection, function (e, i, collection) {
+        //whatever func makes with collection, it is transferred into newArr
+        newArr.push(func(e, i, collection));
+    })
+    return newArr
+}
+
+//TAYLOR'S WAY OF SOLVING
+// _.map = function(collection, func) {
+//     var arr = [];
+    
+//     _.each(collection, function(element, i, a) {
+//         arr.push(func(element, i, a))
+//     })
+//     return arr;
+// }
+
+// _.pluck = function (array, prop) {
+    
+// }
+
+_.pluck = function (array, key) {
+  return array.map(function(obj) {
+    return obj[key];
+  });
+}
 
 /** _.pluck
 * Arguments:
@@ -329,6 +470,40 @@ _.filter = function (array, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.every = function(collection, func){
+    let result = true;
+    //element = e, index = i;
+    _.each(collection, function(e, i, collection){
+        if(typeof func === 'function' || func !== undefined){
+            if(func(e, i, collection) === false) {
+                result = false;
+            }
+        }   else {
+                if(e === null || e === false || e === 0 || e === ''){
+                result = false;
+                }
+            }
+    });
+    return result;
+};
+
+// _.every = function (collection, func) {
+    
+//     _.each(collection, function (e, i, collection) {
+//         if (typeof func === 'undefined') {
+//             if (e === null || e === 0 || 
+//             e === false || e === '') {return false 
+//         } else {return true}}
+//         else {
+//         let result = func (e, i, collection);
+//         if (result === true) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
+// })
+// }
 
 /** _.every
 * Arguments:
@@ -351,6 +526,38 @@ _.filter = function (array, func) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+// _.some = function(collection, func){
+//     let result = true;
+//     //element = e, index = i;
+//     _.each(collection, function(e, i, collection){
+//         if(typeof func === 'function' || func !== undefined){
+//             if(func(e, i, collection) === true) {
+//                 result = true;
+//             }
+//         }   else {
+//                 if(e === null || e === false || e === 0 || e === ''){
+//                 result = false;
+//                 }
+//             }
+//     });
+//     return result;
+// };
+
+_.some = function(collection,func) {
+   let result = false;
+    _.each(collection, function(element, index, collection){
+        if(typeof func === 'function' || func !== undefined){
+            if(func(element, index, collection) === true){
+                result = true;
+            }
+        }  else {
+                if(element === true){
+                result = true;//<--and also to this
+                }
+            }
+    });
+    return result;
+};
 
 /** _.some
 * Arguments:
@@ -393,6 +600,41 @@ _.filter = function (array, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+// _.each = function (collection, func) {
+//     if (Array.isArray(collection)) {
+//         for (var i = 0; i < collection.length; i++) {
+//             func(collection[i], i, collection)
+//         }
+        
+//     }
+//     else if (typeof collection === 'object') {
+//         for (var key in collection) {
+//         func(collection[key], key, collection)
+//         //DON'T FORGET IMPORTANCE OF BRACKET NOTATION VS DOT NOTATION
+//     }
+// }
+// }
+
+_.reduce = function (array, func, seed) {
+    //check if seed is undefined
+    if (seed === undefined) {
+        seed = array[0]
+        //make seed first value in the array
+        
+        //loop through array, starting at index 1, call the func function on seed, element, and 
+    _.each(array, function(element, i, arr) {
+        if (i !== 0) {
+            seed = func(seed, element, i)
+        }
+    });
+    return seed
+    } else {
+        _.each(array, function(element, i, arr) {
+            seed = func(seed, element, i)
+        });
+        return seed;
+    }
+}
 
 /** _.extend
 * Arguments:
@@ -408,6 +650,11 @@ _.filter = function (array, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(object, ...args){ // parameters are an object and also other objects
+    Object.assign(object, ...args); // assign the properties from any of the args objects to the object
+    return object; //return the object
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

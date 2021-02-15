@@ -44,12 +44,12 @@ function arrayOrObject(collection) {
     if (Array.isArray(collection)) {
         return "array";
     }
-    if (collection === null) {
-        return null;
-    }
-    if (collection instanceof Date) {
-        return Date;
-    }
+    // if (collection === null) {
+    //     return null;
+    // }
+    // if (collection instanceof Date) {
+    //     return Date;
+    // }
     if (typeof collection === 'object') {
         return "object";
     }
@@ -207,20 +207,30 @@ for (var keys in object) {
 return object
 }
 
+
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-for (var i = 0; i < array.length; i++) {
-    //define new variable key so that it equals array[i]
-    var key = array[i];
-    //deleting object[key] 
-    delete object[key];
+// for (var i = 0; i < array.length; i++) {
+//     //define new variable key so that it equals array[i]
+//     var key = array[i];
+//     //deleting object[key] 
+//     delete object[key];
 
 
         
+//     }
+// return object
+
+for (var i = 0; i < array.length; i++) {
+    for (var key in object) {
+        if (key === array[i]) {
+            delete object[key]
+        }
     }
+}
 return object
 }
 
@@ -231,14 +241,24 @@ return object
 
 //Remove duplicates from an array using forEach() and include() method
 
+// function dedup(array) {
+// var uniqueArray = [];
+// array.forEach ((c) => {
+//     if (!uniqueArray.includes(c)) {
+//         uniqueArray.push(c);
+//     }
+// })
+// return uniqueArray;
+// }
+
 function dedup(array) {
-var uniqueArray = [];
-array.forEach ((c) => {
-    if (!uniqueArray.includes(c)) {
-        uniqueArray.push(c);
+    var newArr = [];
+    for (let i = 0; i < array.length; i++) {
+        if (!newArr.includes(array[i])) {
+            newArr.push(array[i])
+        }
     }
-})
-return uniqueArray;
+    return newArr;
 }
 
 //////////////////////////////////////////////////////////////////////

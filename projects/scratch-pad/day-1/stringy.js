@@ -198,9 +198,9 @@ function sortAscending(stringOne, stringTwo) {
 if (stringOne === stringTwo) {
     return 0;
 } else if (stringOne > stringTwo) {
-    return -1;
+    return 1;
 } 
-return 1;
+return -1;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -218,9 +218,9 @@ function sortDescending(stringOne, stringTwo) {
  if (stringOne === stringTwo) {
      return 0;
  } else if (stringOne < stringTwo) {
-     return -1;
+     return 1;
  } 
- return 1;
+ return -1;
 
 
 

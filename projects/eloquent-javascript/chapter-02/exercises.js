@@ -36,40 +36,57 @@ function fizzBuzz(a, b) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard(size) {
-    var chessBoard = "";
-
-    for (var lineCounter = 1; lineCounter < size; lineCounter++) { 
-
-        if (lineCounter%2 === 0) { //if lineCounter is an even number
-        for (var charCounter = 1; charCounter < size; charCounter++) {
-            var evenOdd = (charCounter%2 === 0);
-            switch (evenOdd) {
-                case true:
-                    (chessBoard += "#");
-                    break;
-                case false:
-                    (chessBoard += " ");
-                    break;
-                }
-            }                   
-        }
-    else { //if lineCounter is an odd number
-        for (var charCounter = 1; charCounter < size; charCounter++) {
-            var evenOdd = (charCounter%2 === 0);
-            switch (evenOdd) {
-                case true:
-                    (chessBoard += " ");
-                    break;
-                case false:
-                    (chessBoard += "#");
-                    break;
-            }
-            }                       
-        }   
-    chessBoard += "\n";
+  let boardSquare = ''; 
+ 
+  for (var i = 0; i < size; i++) {
+    for(var j = 0; j < size; j++) {
+      if( (i+j) % 2 === 0) {
+         boardSquare += ' ';
+      }
+      else {
+        boardSquare += '#';
+      } 
     }
-    console.log(chessBoard);
-}
+      boardSquare += "\n";
+    }  
+    console.log(boardSquare);
+  }
+
+// function drawChessboard(size) {
+//     var chessBoard = "";
+
+//     for (var lineCounter = 1; lineCounter < size; lineCounter++) { 
+
+//         if (lineCounter%2 === 0) { //if lineCounter is an even number
+//         for (var charCounter = 1; charCounter < size; charCounter++) {
+//             var evenOdd = (charCounter%2 === 0);
+//             switch (evenOdd) {
+//                 case true:
+//                     (chessBoard += "#");
+//                     break;
+//                 case false:
+//                     (chessBoard += " ");
+//                     break;
+//                 }
+//             }                   
+//         }
+//     else { //if lineCounter is an odd number
+//         for (var charCounter = 1; charCounter < size; charCounter++) {
+//             var evenOdd = (charCounter%2 === 0);
+//             switch (evenOdd) {
+//                 case true:
+//                     (chessBoard += " ");
+//                     break;
+//                 case false:
+//                     (chessBoard += "#");
+//                     break;
+//             }
+//             }                       
+//         }   
+//     chessBoard += "\n";
+//     }
+//     console.log(chessBoard);
+// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
